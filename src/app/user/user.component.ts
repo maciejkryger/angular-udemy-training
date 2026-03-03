@@ -2,6 +2,19 @@ import { Component, computed, signal, Input, input , Output, EventEmitter, outpu
 
 // import { DUMMY_USERS } from '../dummy-users';
 
+// type User = {
+//   id: string;
+//   avatar: string;
+//   name: string;
+// }
+
+interface User {
+  id: string;
+  avatar: string;
+  name: string;
+}
+
+
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -13,9 +26,10 @@ export class UserComponent {
   // selectedUser = signal(DUMMY_USERS[randomUserIndex]);
   // imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar);
 
-  @Input({required: true}) id!: string;
-  @Input({required: true}) avatar!: string;
-  @Input({required: true}) name!: string;
+  // @Input({required: true}) id!: string;
+  // @Input({required: true}) avatar!: string;
+  // @Input({required: true}) name!: string;
+  @Input({required: true}) user!: User;
   // avatar = input.required<string>();
   // name = input.required<string>();
 
@@ -29,13 +43,13 @@ export class UserComponent {
 
   get imagePath() {
   //   return 'assets/users/' + this.selectedUser.avatar;
-    return 'assets/users/' + this.avatar;
+    return 'assets/users/' + this.user.avatar;
   }
 
   onSelectUser() {
     // const randomUserIndex = Math.floor(Math.random() * DUMMY_USERS.length);
     // this.selectedUser = DUMMY_USERS[randomUserIndex];
     // this.selectedUser.set(DUMMY_USERS[randomUserIndex]);
-    this.select.emit(this.id);
+    this.select.emit(this.user.id);
   }
 }
