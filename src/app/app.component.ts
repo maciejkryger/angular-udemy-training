@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 
 import { HeaderComponent } from "./header/header.component";
